@@ -1,0 +1,57 @@
+{
+    "name": "extcode/cart-pick-up-only",
+    "type": "typo3-cms-extension",
+    "description": "Shopping Cart(s) for TYPO3 - Pick Up Only",
+    "homepage": "https://www.extco.de",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "Shopping Cart",
+        "cart",
+        "pick up only"
+    ],
+    "authors": [
+        {
+            "name": "Daniel Gohlke",
+            "email": "ext.cart@extco.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2 <7.5",
+        "ext-pdo": "*",
+        "extcode/cart": "^6.9",
+        "extcode/cart-products": "^2.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Extcode\\CartPickUpOnly\\": "Classes/"
+        }
+    },
+    "replace": {
+        "extcode/cart_pick_up_only": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .Build/Web/typo3conf/ext/",
+            "[ -L .Build/Web/typo3conf/ext/cart_pick_up_only ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/cart_pick_up_only"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "cart_pick_up_only",
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "app-dir": ".Build",
+            "web-dir": ".Build/public"
+        }
+    }
+}
